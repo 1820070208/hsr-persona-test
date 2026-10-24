@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="收集你在崩铁人格测试中解锁的全部人格。" />
+  <meta property="og:title" content="人格图鉴 | 崩铁人格测试" />
+  <meta property="og:description" content="星穹列车的 16 位乘员，等你对号入座。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/og-cover.jpg" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L14.3 9.7 L23 12 L14.3 14.3 L12 23 L9.7 14.3 L1 12 L9.7 9.7 Z' fill='%23e8bf6f'/%3E%3C/svg%3E" />
+  <title>人格图鉴 | 崩铁人格测试</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="nebula nebula-1" aria-hidden="true"></div>
+  <div class="nebula nebula-2" aria-hidden="true"></div>
+  <div class="planet" aria-hidden="true"></div>
+
+  <main class="hero page-flow">
+    <section class="screen">
+      <div class="badge"><span class="t">星海收藏</span></div>
+      <h2 class="gallery-title"><span class="title-main">人格图鉴</span></h2>
+      <p class="subtitle" id="gallery-subtitle">已解锁 0 / 16</p>
+
+      <div class="persona-grid" id="persona-grid"></div>
+
+      <nav class="buttons">
+        <a class="btn btn-ghost" id="btn-last-result" href="test.html#result" hidden>查看上次结果</a>
+        <a class="btn btn-primary" id="btn-start-test" href="test.html">去开始测试</a>
+        <a class="btn btn-ghost" href="index.html">返回首页</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>粉丝二创作品 · 与 miHoYo / HoYoverse 无关 · 角色版权归原作所有</p>
+  </footer>
+
+  <script src="assets/js/personas.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/unlocked.js"></script>
+</body>
+</html>

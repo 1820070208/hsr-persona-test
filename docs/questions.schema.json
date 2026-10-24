@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "hsr-persona-questions.schema.json",
+  "title": "崩铁人格测试题库",
+  "description": "题库文件，共三种形态：快速版 24 题（Q01–Q24，questions.json）、增补包 12 题（Q25–Q36，questions.extra.json）、详细版 36 题（Q01–Q36，questions.detailed.json = 快速版 + 增补包）。其中 Q01–Q20、Q25–Q36 为同意度题（likert），Q21–Q24 为情景题（scenario）。字段定义见 docs/题目设计规范.md 第 7 节。",
+  "allOf": [
+    {
+      "type": "object",
+      "required": ["version", "questions"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/question"
+          }
+        }
+      }
+    },
+    {
+      "oneOf": [
+        {
+          "description": "快速版：24 题完整题库",
+          "required": ["questions"],
+          "properties": {
+            "questions": { "minItems": 24, "maxItems": 24 }
+          }
+        },
+        {
+          "description": "详细版：36 题完整题库（快速版 + 增补包合并）",
+          "required": ["questions"],
+          "properties": {
+            "questions": { "minItems": 36, "maxItems": 36 }
+          }
+        },
+        {
+          "description": "增补包：12 题详细版增量（Q25–Q36）",
+          "required": ["questions"],
+          "properties": {
+            "questions": { "minItems": 12, "maxItems": 12 }
+          }
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "axis": {
+      "type": "string",
+      "enum": ["EI", "TF", "JP", "SN"]
+    },
+    "pole": {
+      "type": "string",
+      "enum": ["E", "I", "T", "F", "J", "P", "S", "N"]
+    },
+    "score": {
+      "type": "object",
+      "description": "给某个「轴 + 极」计分。情景题每个选项固定恰好一个 score，值为 +1。",
+      "required": ["axis", "pole"],
+      "additionalProperties": false,
+      "properties": {
+        "axis": { "$ref": "#/definitions/axis" },
+        "pole": { "$ref": "#/definitions/pole" }
+      }
+    },
+    "likertQuestion": {
+      "type": "object",
+      "description": "同意度题：第一人称陈述句，5 档量表（非常不同意…非常同意），映射为 −2…+2 计入 pole 指向的极。位于 Q01–Q20（快速版）或 Q25–Q36（详细版增补）。",
+      "required": ["id", "kind", "axis", "pole", "text", "intent", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^Q(0[1-9]|1[0-9]|20|2[5-9]|3[0-6])$"
+        },
+        "kind": { "const": "likert" },
+        "axis": { "$ref": "#/definitions/axis" },
+        "pole": { "$ref": "#/definitions/pole" },
+        "text": {
+          "type": "string",
+          "description": "以「我」开头的中文陈述句，约 15–25 字，中性无评判。",
+          "minLength": 10,
+          "maxLength": 40
+        },
+        "intent": {
+          "type": "string",
+          "description": "约 5 字的子意图标签，整个 36 题题库内不得重复。",
+          "minLength": 2,
+          "maxLength": 6
+        },
+        "note": {
+          "type": "string",
+          "description": "给策划的备注，可为空字符串。"
+        }
+      },
+      "examples": [
+        {
+          "id": "Q01",
+          "kind": "likert",
+          "axis": "EI",
+          "pole": "E",
+          "text": "我在人多的热闹场合待一晚，散场时反而更精神。",
+          "intent": "人群充电",
+          "note": ""
+        },
+        {
+          "id": "Q25",
+          "kind": "likert",
+          "axis": "EI",
+          "pole": "E",
+          "text": "我经常是那个在饭桌上抛出新话题的人。",
+          "intent": "话题发起",
+          "note": ""
+        }
+      ]
+    },
+    "scenarioQuestion": {
+      "type": "object",
+      "description": "情景题：题干以场景描述结尾（破折号或问号引出），四个选项各给一个「轴 + 极」加 1 分。仅 Q21–Q24，两种版本共用，不增补。",
+      "required": ["id", "kind", "text", "options"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^Q2[1-4]$"
+        },
+        "kind": { "const": "scenario" },
+        "text": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 60
+        },
+        "options": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["text", "scores"],
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "具体、有画面感的短句，约 20–35 字，四选项长度接近、吸引力均衡。",
+                "minLength": 15,
+                "maxLength": 45
+              },
+              "scores": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 1,
+                "items": { "$ref": "#/definitions/score" }
+              }
+            }
+          }
+        }
+      },
+      "examples": [
+        {
+          "id": "Q21",
+          "kind": "scenario",
+          "text": "列车临时停靠，你获得半天空闲，正好逛逛这座陌生的城市——",
+          "options": [
+            { "text": "一头扎进最热闹的街市，跟摊主和路人聊个痛快", "scores": [{ "axis": "EI", "pole": "E" }] },
+            { "text": "找一家安静的旧书店，一个人慢慢消磨整个下午", "scores": [{ "axis": "EI", "pole": "I" }] },
+            { "text": "先查好地图排好路线，按顺序把景点一个个走完", "scores": [{ "axis": "JP", "pole": "J" }] },
+            { "text": "不看地图随便乱逛，哪条巷子看着顺眼就拐进哪条", "scores": [{ "axis": "JP", "pole": "P" }] }
+          ]
+        }
+      ]
+    },
+    "question": {
+      "oneOf": [
+        { "$ref": "#/definitions/likertQuestion" },
+        { "$ref": "#/definitions/scenarioQuestion" }
+      ]
+    }
+  }
+}

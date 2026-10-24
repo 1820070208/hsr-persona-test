@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "enabledPlugins": {
+      "github@zcode-plugins-official": true
+    }
+  }
+}
