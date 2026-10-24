@@ -306,7 +306,7 @@ body {
 /* 版本选择 */
 .version-picker {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin: 0 0 16px;
   text-align: left;
@@ -460,6 +460,26 @@ body {
   color: #c9d4f2;
 }
 .result-code { color: var(--gold); }
+.result-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 5px 14px 5px 6px;
+  border: 1px solid rgba(159, 198, 232, 0.35);
+  border-radius: 999px;
+  background: rgba(159, 198, 232, 0.08);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #a8d8ff;
+}
+.result-sub img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(159, 198, 232, 0.5);
+}
+.result-sub span { display: inline-block; }
 .result-blurb {
   max-width: 440px;
   margin: 14px 0 0;
@@ -730,6 +750,18 @@ body {
 @media (max-width: 520px) {
   .version-picker { grid-template-columns: 1fr; }
 }
+
+.sub-card {
+  background: linear-gradient(180deg, rgba(159, 198, 232, 0.08), rgba(159, 198, 232, 0.02));
+  border-color: rgba(159, 198, 232, 0.35) !important;
+  box-shadow: 0 0 18px rgba(126, 200, 255, 0.1);
+}
+.sub-card:hover {
+  border-color: rgba(159, 198, 232, 0.7) !important;
+  box-shadow: 0 0 28px rgba(126, 200, 255, 0.22);
+}
+.sub-card .persona-avatar { border-color: rgba(159, 198, 232, 0.55); }
+.sub-card .persona-title { color: #a8d8ff; }
 
 /* ============ 结果页人物展示 ============ */
 #screen-result { position: relative; }

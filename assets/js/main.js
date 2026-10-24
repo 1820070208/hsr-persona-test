@@ -133,12 +133,15 @@
   if (strip && window.HSR_PERSONAS) {
     window.HSR_PERSONAS.order.forEach(function (key) {
       const p = window.HSR_PERSONAS.byCode[key];
-      const img = document.createElement('img');
-      img.src = p.img;
-      img.alt = p.name;
-      img.title = p.name;
-      img.loading = 'lazy';
-      strip.appendChild(img);
+      const members = [p, p.sub].filter(Boolean);
+      members.forEach(function (m) {
+        const img = document.createElement('img');
+        img.src = m.img;
+        img.alt = m.name;
+        img.title = m.name;
+        img.loading = 'lazy';
+        strip.appendChild(img);
+      });
     });
   }
 })();

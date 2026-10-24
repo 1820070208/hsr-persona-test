@@ -1,4 +1,4 @@
-// 自动生成自 docs/questions.detailed.json（standardIds = docs/questions.json 的快速版 24 题）—— 改题请改 JSON 后重新生成此文件
+// 自动生成自 docs/questions.detailed.json（standardIds=快速版24题, deepIds=详细版36题）—— 改题请改 JSON 后重新生成此文件
 window.HSR_QUESTIONS = {
   "version": "1.0",
   "standardIds": [
@@ -26,6 +26,44 @@ window.HSR_QUESTIONS = {
     "Q22",
     "Q23",
     "Q24"
+  ],
+  "deepIds": [
+    "Q01",
+    "Q02",
+    "Q03",
+    "Q04",
+    "Q05",
+    "Q06",
+    "Q07",
+    "Q08",
+    "Q09",
+    "Q10",
+    "Q11",
+    "Q12",
+    "Q13",
+    "Q14",
+    "Q15",
+    "Q16",
+    "Q17",
+    "Q18",
+    "Q19",
+    "Q20",
+    "Q21",
+    "Q22",
+    "Q23",
+    "Q24",
+    "Q25",
+    "Q26",
+    "Q27",
+    "Q28",
+    "Q29",
+    "Q30",
+    "Q31",
+    "Q32",
+    "Q33",
+    "Q34",
+    "Q35",
+    "Q36"
   ],
   "questions": [
     {
@@ -486,6 +524,114 @@ window.HSR_QUESTIONS = {
       "pole": "N",
       "text": "我常常琢磨若干年后的生活可能是什么样子。",
       "intent": "未来畅想",
+      "note": ""
+    },
+    {
+      "id": "Q37",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我闲不住，一到周末就琢磨约人出去玩。",
+      "intent": "周末安排",
+      "note": ""
+    },
+    {
+      "id": "Q38",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我遇到开心的事，会立刻想分享给身边的人。",
+      "intent": "情绪外放",
+      "note": ""
+    },
+    {
+      "id": "Q39",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "I",
+      "text": "能用文字说清楚的事，我一般不打电话。",
+      "intent": "沟通方式",
+      "note": "现代社交的 I 极经典外显。"
+    },
+    {
+      "id": "Q40",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "T",
+      "text": "我坚持规则面前人人平等，亲近的人也不例外。",
+      "intent": "规则公平",
+      "note": ""
+    },
+    {
+      "id": "Q41",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "走进一个房间，我总能先察觉到气氛的细微变化。",
+      "intent": "氛围嗅觉",
+      "note": ""
+    },
+    {
+      "id": "Q42",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "就算决定是对的，只要伤了人我也会难受很久。",
+      "intent": "事后煎熬",
+      "note": ""
+    },
+    {
+      "id": "Q43",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "J",
+      "text": "我喜欢列待办清单，划掉已完成的一项特别满足。",
+      "intent": "清单划勾",
+      "note": ""
+    },
+    {
+      "id": "Q44",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我出门逛街，常会买下原本没打算买的东西。",
+      "intent": "计划外消费",
+      "note": ""
+    },
+    {
+      "id": "Q45",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我的兴趣隔一阵子就会转向新的方向。",
+      "intent": "兴趣轮换",
+      "note": ""
+    },
+    {
+      "id": "Q46",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "我常会想，如果当时换个选择，现在会怎样。",
+      "intent": "假设推演",
+      "note": ""
+    },
+    {
+      "id": "Q47",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "看完一部作品，我总忍不住琢磨它想表达什么。",
+      "intent": "追问深意",
+      "note": ""
+    },
+    {
+      "id": "Q48",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "S",
+      "text": "我对气味和触感这类细节，总记得格外清楚。",
+      "intent": "感官记忆",
       "note": ""
     }
   ]

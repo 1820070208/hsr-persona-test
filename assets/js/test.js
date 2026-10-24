@@ -4,6 +4,7 @@
 
   const QUESTIONS = window.HSR_QUESTIONS.questions;
   const STANDARD_IDS = new Set(window.HSR_QUESTIONS.standardIds);
+  const DEEP_IDS = new Set(window.HSR_QUESTIONS.deepIds);
   const PERSONAS = window.HSR_PERSONAS;
   const CONTENT = window.HSR_PERSONA_CONTENT;
   const STORAGE_KEY = 'hsrPersonaUnlocked';
@@ -31,6 +32,7 @@
     backdrop: document.getElementById('result-backdrop-img'),
     character: document.getElementById('result-character'),
     blurb: document.getElementById('result-blurb'),
+    sub: document.getElementById('result-sub'),
     quote: document.getElementById('result-quote'),
     profile: document.getElementById('profile-text'),
     radar: document.getElementById('radar-wrap'),
@@ -84,9 +86,10 @@
 
   /* 组卷：情景题选项每次随机打乱（同意度题是量表，保持顺序不变） */
   function buildPool() {
-    const base = version === 'deep'
-      ? QUESTIONS
-      : QUESTIONS.filter(function (q) { return STANDARD_IDS.has(q.id); });
+    let base;
+    if (version === 'pro') base = QUESTIONS;
+    else if (version === 'deep') base = QUESTIONS.filter(function (q) { return DEEP_IDS.has(q.id); });
+    else base = QUESTIONS.filter(function (q) { return STANDARD_IDS.has(q.id); });
     return base.map(function (q) {
       if (q.kind !== 'scenario') return q;
       const opts = q.options.slice();
@@ -281,6 +284,17 @@
     codeSpan.textContent = ' · ' + persona.code;
     els.character.appendChild(nameSpan);
     els.character.appendChild(codeSpan);
+
+    // 同型另一面
+    if (persona.sub) {
+      els.sub.hidden = false;
+      els.sub.innerHTML =
+        '<img src="' + persona.sub.img + '" alt="' + persona.sub.name + ' 头像" />' +
+        '<span>另一面 · ' + persona.sub.name + '「' + persona.sub.title + '」</span>';
+    } else {
+      els.sub.hidden = true;
+    }
+
     els.blurb.textContent = persona.blurb;
     els.quote.textContent = '「' + content.quote + '」';
 

@@ -20,7 +20,7 @@
   );
 
   document.getElementById('gallery-subtitle').textContent =
-    '已解锁 ' + owned.size + ' / 16';
+    '已解锁 ' + owned.size + ' / 16 型 · 共 32 位乘员';
 
   /* 有上次结果时，显示「查看上次结果」并让它作为主按钮 */
   const lastBtn = document.getElementById('btn-last-result');
@@ -38,8 +38,11 @@
   const grid = document.getElementById('persona-grid');
   PERSONAS.order.forEach(function (key) {
     const persona = PERSONAS.byCode[key];
+    const isUnlocked = owned.has(key);
+
+    // 主人格
     const card = document.createElement('div');
-    if (owned.has(key)) {
+    if (isUnlocked) {
       card.className = 'persona-card unlocked';
       card.dataset.code = key;
       card.tabIndex = 0;
@@ -67,6 +70,40 @@
         '<div class="persona-title">尚未解锁</div>';
     }
     grid.appendChild(card);
+
+    // 同型另一面（与主人格同锁）
+    const sub = persona.sub;
+    if (sub) {
+      const subCard = document.createElement('div');
+      if (isUnlocked) {
+        subCard.className = 'persona-card unlocked sub-card';
+        subCard.dataset.code = key;
+        subCard.tabIndex = 0;
+        subCard.setAttribute('role', 'button');
+        subCard.setAttribute('aria-label', '查看' + sub.name + '的人格详情');
+        subCard.addEventListener('click', function () { openPersona(key); });
+        subCard.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openPersona(key);
+          }
+        });
+        subCard.innerHTML =
+          '<img class="persona-avatar" src="' + sub.img + '" alt="' + sub.name + ' 头像" />' +
+          '<div class="persona-code">' + persona.code + ' · 另一面</div>' +
+          '<div class="persona-name">' + sub.name + '</div>' +
+          '<div class="persona-title">' + sub.title + '</div>' +
+          '<div class="persona-blurb">' + sub.blurb + '</div>';
+      } else {
+        subCard.className = 'persona-card locked';
+        subCard.innerHTML =
+          '<div class="persona-avatar locked" aria-hidden="true">？</div>' +
+          '<div class="persona-code">· · · ·</div>' +
+          '<div class="persona-name">？？？</div>' +
+          '<div class="persona-title">尚未解锁</div>';
+      }
+      grid.appendChild(subCard);
+    }
   });
 
   /* 点进卡片：最近测出的人格直接还原真实结果，其余用典型倾向合成同款结果页 */
