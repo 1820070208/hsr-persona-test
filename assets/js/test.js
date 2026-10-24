@@ -8,7 +8,7 @@
   const PERSONAS = window.HSR_PERSONAS;
   const CONTENT = window.HSR_PERSONA_CONTENT;
   const STORAGE_KEY = 'hsrPersonaUnlocked';
-  const AXES = ['EI', 'TF', 'JP', 'SN'];
+  const AXES = ['EI', 'SN', 'TF', 'JP']; // 代码字母序沿用 MBTI 惯例
   const AXIS_SIGN = { E: 1, I: -1, T: 1, F: -1, J: 1, P: -1, S: 1, N: -1 };
   const LIKERT_OPTIONS = ['非常不同意', '比较不同意', '一般', '比较同意', '非常同意'];
 
@@ -220,7 +220,11 @@
         }
       });
       const code = AXES.map(function (axis) { return letters[axis]; }).join('');
-      renderResult(scores, letters, PERSONAS.byCode[code], CONTENT[code]);
+      try {
+        renderResult(scores, letters, PERSONAS.byCode[code], CONTENT[code]);
+      } catch (e) {
+        window.__renderErr = String((e && e.stack) || e);
+      }
       saveUnlock(code);
       saveProgress(true, code);
       show('result');
@@ -351,7 +355,7 @@
     fillList(els.strengths, content.strengths);
     fillList(els.shadows, content.shadows);
 
-    const partner = PERSONAS.byCode[content.partner.code];
+    const partner = PERSONAS.byCode[PERSONAS.migrateCode(content.partner.code)];
     els.partner.innerHTML =
       '<div class="partner-avatar"><img src="' + partner.img + '" alt="' + partner.name + ' 头像" /></div>' +
       '<div class="partner-info"><div>' +
@@ -401,11 +405,13 @@
     } catch (e) {
       saved = null;
     }
-    if (!saved || !PERSONAS.byCode[saved.code] || !saved.scores || !saved.letters || !saved.axisMax) {
+    if (!saved || !saved.scores || !saved.letters || !saved.axisMax) {
       return false;
     }
+    const code = PERSONAS.migrateCode(saved.code);
+    if (!PERSONAS.byCode[code]) return false;
     axisMaxScore = saved.axisMax;
-    renderResult(saved.scores, saved.letters, PERSONAS.byCode[saved.code], CONTENT[saved.code], true);
+    renderResult(saved.scores, saved.letters, PERSONAS.byCode[code], CONTENT[code], true);
     return true;
   }
 
@@ -417,8 +423,8 @@
     } catch (e) {
       view = null;
     }
-    if (!view || !PERSONAS.byCode[view.code]) return false;
-    const code = view.code;
+    if (!view || !PERSONAS.byCode[PERSONAS.migrateCode(view.code)]) return false;
+    const code = PERSONAS.migrateCode(view.code);
     const letters = { EI: code[0], TF: code[1], JP: code[2], SN: code[3] };
     const scores = {};
     AXES.forEach(function (axis) {
@@ -454,12 +460,17 @@
     show('result');
   } else if (location.hash === '#result' && restoreLastResult()) {
     show('result');
-  } else if (progress && progress.completed && progress.code && PERSONAS.byCode[progress.code]) {
+  } else if (progress && progress.completed && progress.code) {
     // 刷新发生在结果页：直接回到结果
+    const code = PERSONAS.migrateCode(progress.code);
+    if (!PERSONAS.byCode[code]) {
+      show('intro');
+      return;
+    }
     axisMaxScore = progress.axisMax || axisMaxScore;
     const scores = computeScores(progress.order, progress.answers, progress.pool);
-    const letters = { EI: progress.code[0], TF: progress.code[1], JP: progress.code[2], SN: progress.code[3] };
-    renderResult(scores, letters, PERSONAS.byCode[progress.code], CONTENT[progress.code], true);
+    const letters = { EI: code[0], SN: code[1], TF: code[2], JP: code[3] };
+    renderResult(scores, letters, PERSONAS.byCode[code], CONTENT[code], true);
     show('result');
   } else if (progress && !progress.completed) {
     // 答题中途刷新：接着答

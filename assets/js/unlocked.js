@@ -16,7 +16,7 @@
   const owned = new Set(
     unlocked
       .filter(function (p) { return p && p.code; })
-      .map(function (p) { return p.code.replace(/-/g, ''); })
+      .map(function (p) { return PERSONAS.migrateCode(p.code); })
   );
 
   document.getElementById('gallery-subtitle').textContent =
@@ -114,7 +114,7 @@
     } catch (e) {
       last = null;
     }
-    if (last && last.code === key) {
+    if (last && PERSONAS.migrateCode(last.code) === key) {
       location.href = 'test.html#result';
       return;
     }
