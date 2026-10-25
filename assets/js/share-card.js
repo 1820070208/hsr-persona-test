@@ -8,6 +8,8 @@
   const tipEl = document.getElementById('share-tip');
   const downloadEl = document.getElementById('share-download');
   const FONT = '"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif';
+  /* 分享卡二维码指向的正式地址；更换部署域名时改这里 */
+  const SITE_URL = 'https://1820070208.github.io/hsr-persona-test/test.html';
 
   let objectUrl = null;
 
@@ -101,6 +103,47 @@
     ctx.restore();
   }
 
+  /* 白底二维码面板，保证深浅对比可扫 */
+  function drawQR(ctx, x, y, size, url) {
+    if (typeof window.qrcode !== 'function') return;
+    try {
+      const qr = window.qrcode(0, 'M');
+      qr.addData(url);
+      qr.make();
+      const count = qr.getModuleCount();
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,0.5)';
+      ctx.shadowBlur = 16;
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, size, size, 14);
+      else ctx.rect(x, y, size, size);
+      ctx.fill();
+      ctx.restore();
+
+      ctx.strokeStyle = 'rgba(232,191,111,0.7)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, size, size, 14);
+      else ctx.rect(x, y, size, size);
+      ctx.stroke();
+
+      const pad = 16;
+      const cell = (size - pad * 2) / count;
+      ctx.fillStyle = '#141826';
+      for (let r = 0; r < count; r++) {
+        for (let c = 0; c < count; c++) {
+          if (qr.isDark(r, c)) {
+            ctx.fillRect(x + pad + c * cell, y + pad + r * cell, cell + 0.4, cell + 0.4);
+          }
+        }
+      }
+    } catch (e) {
+      /* 二维码生成失败时跳过，不影响卡片其余部分 */
+    }
+  }
+
   function drawAxes(ctx, W, scores, letters, axisMax) {
     const PERSONAS = window.HSR_PERSONAS;
     const top = 745;
@@ -173,7 +216,7 @@
     const persona = result.persona;
     const content = result.content;
     const W = 900;
-    const H = 1520;
+    const H = 1710;
 
     const canvas = document.createElement('canvas');
     canvas.width = W;
@@ -269,7 +312,7 @@
     ctx.fillText('✦', W / 2, ornY + 7);
 
     // 站名
-    const siteY = 1430;
+    const siteY = 1428;
     const siteGrad = ctx.createLinearGradient(0, siteY - 40, 0, siteY + 8);
     siteGrad.addColorStop(0, '#fff8e3');
     siteGrad.addColorStop(1, '#c89a4a');
@@ -283,12 +326,16 @@
     const now = new Date();
     const dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') +
       '.' + String(now.getDate()).padStart(2, '0');
-    ctx.font = font(20);
+    ctx.font = font(19);
     ctx.fillStyle = 'rgba(230,236,255,0.5)';
-    ctx.fillText('心灵观测计划 · ' + dateStr + ' 生成', W / 2, 1476);
-    ctx.font = font(14);
-    ctx.fillStyle = 'rgba(230,236,255,0.3)';
-    ctx.fillText('粉丝二创 · 角色版权归 miHoYo / HoYoverse 所有', W / 2, 1506);
+    ctx.fillText('心灵观测计划 · ' + dateStr + ' 生成 · 粉丝二创作品', W / 2, 1470);
+
+    // 扫码即玩
+    drawQR(ctx, W / 2 - 90, 1494, 180, SITE_URL);
+
+    ctx.font = font(19);
+    ctx.fillStyle = 'rgba(232,191,111,0.75)';
+    ctx.fillText('扫码上车 · 即刻开测', W / 2, 1696);
 
     return canvas;
   }

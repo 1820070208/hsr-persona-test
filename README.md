@@ -51,6 +51,8 @@ assets/img/         角色头像（enka.network 游戏资源）与背景图
 
 改题目请改 `docs/questions.detailed.json`，然后重新生成 `assets/js/questions.js`（生成方式见该文件头部注释）。
 
+分享卡底部的「扫码即玩」二维码由 `assets/js/qrcode.min.js`（[qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator)，MIT 协议）在浏览器本地生成，指向 `assets/js/share-card.js` 顶部的 `SITE_URL` 常量——更换部署域名时同步修改即可。
+
 ## 版权说明
 
 本项目为粉丝二创作品，与 miHoYo / HoYoverse 无关。页面中的角色头像、背景图等素材版权归 miHoYo / HoYoverse 所有，请勿将本项目用于任何商业用途。
