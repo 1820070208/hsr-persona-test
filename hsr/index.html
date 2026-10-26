@@ -63,6 +63,18 @@
   </footer>
 
   <script src="../assets/js/personas.js"></script>
+  <script>
+    /* 本页在 /hsr/ 子目录下：personas.js 里的头像路径相对根目录，这里统一加前缀 */
+    (function () {
+      var P = window.HSR_PERSONAS;
+      if (!P) return;
+      P.order.forEach(function (key) {
+        var p = P.byCode[key];
+        if (p.img) p.img = '../' + p.img;
+        if (p.sub && p.sub.img) p.sub.img = '../' + p.sub.img;
+      });
+    })();
+  </script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
