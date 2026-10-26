@@ -20,11 +20,13 @@ python3 -m http.server 4173
 
 ```
 index.html                  起始页（选择崩铁 / 原神）
+hsr/index.html              崩铁起始页
 test.html / unlocked.html   崩铁版：答题与人格图鉴
-genshin/                    原神版：test.html / unlocked.html（index.html 为跳转页）
+genshin/index.html          原神起始页
+genshin/test.html 等        原神版：答题与人格图鉴
 docs/                       崩铁题库 JSON、schema 与出题规范
 genshin/docs/               原神题库（复用崩铁题库，仅情景措辞本地化）
-assets/                     崩铁版与起始页的样式、脚本、素材
+assets/                     起始页与崩铁版的样式、脚本、素材
 genshin/assets/             原神版样式、脚本与角色头像
 ```
 
