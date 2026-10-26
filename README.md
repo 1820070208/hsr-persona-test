@@ -1,8 +1,11 @@
-# 崩铁人格测试
+# 人格测试（崩铁 × 原神）
 
-一个纯静态、零后端的崩坏：星穹铁道同人人格测试站。答题（快速版 24 题 / 详细版 36 题）→ 结果分析（人格画像、四维星图、逐轴解读）→ 人格图鉴收集 → 生成分享卡。
+一个纯静态、零后端的双游戏同人人格测试站。起始页选择世界：
 
-所有数据（解锁记录、上次结果、答题进度）只保存在访客自己的浏览器里，不收集任何信息。
+- **崩坏：星穹铁道**（根目录）：32 位乘员，快速 24 题 / 详细 36 题 / 专业 48 题
+- **原神：提瓦特**（`genshin/`）：40 位同路人（含挪德卡莱与至冬），同款三档题库
+
+两个世界的流程一致：答题 → 结果分析（人格画像、四维星图、逐轴解读）→ 人格图鉴收集 → 生成分享卡。所有数据（解锁记录、上次结果、答题进度）只保存在访客自己的浏览器里，不收集任何信息。
 
 ## 本地预览
 
@@ -12,6 +15,20 @@ python3 -m http.server 4173
 ```
 
 直接双击 `index.html` 也能玩，但「生成分享卡」的导出功能需要 http 环境。
+
+## 目录结构
+
+```
+index.html                  起始页（选择崩铁 / 原神）
+test.html / unlocked.html   崩铁版：答题与人格图鉴
+genshin/                    原神版：test.html / unlocked.html（index.html 为跳转页）
+docs/                       崩铁题库 JSON、schema 与出题规范
+genshin/docs/               原神题库（复用崩铁题库，仅情景措辞本地化）
+assets/                     崩铁版与起始页的样式、脚本、素材
+genshin/assets/             原神版样式、脚本与角色头像
+```
+
+改崩铁题目请改 `docs/questions.detailed.json`，改原神题目请改 `genshin/docs/questions.detailed.json`，然后分别重新生成对应目录下的 `assets/js/questions.js`（生成方式见该文件头部注释）。
 
 ## 部署
 
@@ -26,7 +43,7 @@ python3 -m http.server 4173
 
 ### 部署后要做的一件小事
 
-把三个 HTML 页面里 `og:image` 的相对路径改成绝对地址（否则部分平台抓不到分享缩略图）：
+把各 HTML 页面里 `og:image` 的相对路径改成绝对地址（否则部分平台抓不到分享缩略图）：
 
 ```html
 <meta property="og:image" content="https://你的域名/assets/img/og-cover.jpg" />
@@ -37,21 +54,9 @@ python3 -m http.server 4173
 - 分享卡「长按图片保存」在微信里可用；「下载图片」按钮在 iOS 微信不可用（webview 限制），安卓端建议引导用系统浏览器打开。
 - 微信自定义分享卡片（带缩略图的卡片）需要微信 JS-SDK 签名，需要后端支持；不做的情况下，分享出去默认显示网页标题 + 首图。
 
-## 目录结构
+## 分享卡二维码
 
-```
-index.html          首页
-test.html           答题 / 结果页
-unlocked.html       人格图鉴
-docs/               题库 JSON（questions.json 快速版 / questions.extra.json 增补 / questions.detailed.json 合并）与出题规范
-assets/css/style.css      全站样式
-assets/js/          逻辑脚本（见各文件头部注释）
-assets/img/         角色头像（enka.network 游戏资源）与背景图
-```
-
-改题目请改 `docs/questions.detailed.json`，然后重新生成 `assets/js/questions.js`（生成方式见该文件头部注释）。
-
-分享卡底部的「扫码即玩」二维码由 `assets/js/qrcode.min.js`（[qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator)，MIT 协议）在浏览器本地生成，指向 `assets/js/share-card.js` 顶部的 `SITE_URL` 常量——更换部署域名时同步修改即可。
+两个版本分享卡底部的「扫码即玩」二维码由 `assets/js/qrcode.min.js`（[qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator)，MIT 协议）在浏览器本地生成，分别指向 `assets/js/share-card.js`（崩铁）与 `genshin/assets/js/share-card.js`（原神）顶部的 `SITE_URL` 常量——更换部署域名时同步修改即可。
 
 ## 版权说明
 

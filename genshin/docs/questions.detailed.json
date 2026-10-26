@@ -1,0 +1,573 @@
+{
+  "version": "1.0",
+  "questions": [
+    {
+      "id": "Q01",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我在人多的热闹场合待一晚，散场时反而更精神。",
+      "intent": "人群充电",
+      "note": "测精力来源而非社交能力，热闹后状态更好即倾向E。"
+    },
+    {
+      "id": "Q02",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "I",
+      "text": "我连着社交好几天后，会特别渴望一个人待着。",
+      "intent": "独处回血",
+      "note": ""
+    },
+    {
+      "id": "Q03",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我到了新环境，会主动先跟旁边的人搭话。",
+      "intent": "主动破冰",
+      "note": ""
+    },
+    {
+      "id": "Q04",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "I",
+      "text": "我在小组讨论里，通常更愿意当那个安静听的人。",
+      "intent": "倾听定位",
+      "note": "倾向I不等于社恐，只是默认角色是听者。"
+    },
+    {
+      "id": "Q05",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我常常刚认识不久，就跟人聊得像老朋友一样。",
+      "intent": "熟络速度",
+      "note": ""
+    },
+    {
+      "id": "Q06",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "T",
+      "text": "我做重要决定前，会先列出各选项的好处和坏处。",
+      "intent": "决策流程",
+      "note": ""
+    },
+    {
+      "id": "Q07",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "我听朋友倾诉时，总是先接住情绪，再想办法。",
+      "intent": "情绪优先",
+      "note": "先安抚还是先给方案，是F/T的分水岭。"
+    },
+    {
+      "id": "Q08",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "T",
+      "text": "我和人争论时，会不自觉地开始核对事实和逻辑。",
+      "intent": "对错取舍",
+      "note": ""
+    },
+    {
+      "id": "Q09",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "我看电影或小说时，最打动我的往往是人物的情感。",
+      "intent": "动心之处",
+      "note": ""
+    },
+    {
+      "id": "Q10",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "T",
+      "text": "我一遇到突发状况，第一反应是先查哪里出了问题。",
+      "intent": "出事反应",
+      "note": ""
+    },
+    {
+      "id": "Q11",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "J",
+      "text": "我出门旅行前，会提前把每天的安排都查好。",
+      "intent": "行程计划",
+      "note": ""
+    },
+    {
+      "id": "Q12",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我碰上计划临时生变，反而觉得有新的可能。",
+      "intent": "应变态度",
+      "note": "P方向的松动是兴奋而非摆烂，注意保持中性。"
+    },
+    {
+      "id": "Q13",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "J",
+      "text": "我的桌面和收藏夹，都有固定的分类和位置。",
+      "intent": "秩序感",
+      "note": ""
+    },
+    {
+      "id": "Q14",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我常常在截止日期前夜，才进入火力全开状态。",
+      "intent": "死线行为",
+      "note": "措辞给P方向留了体面，避免自评时回避。"
+    },
+    {
+      "id": "Q15",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "J",
+      "text": "我更喜欢提前敲定安排，不喜欢悬而未决的感觉。",
+      "intent": "确定需求",
+      "note": ""
+    },
+    {
+      "id": "Q16",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "S",
+      "text": "我看一幅画时，会先注意到笔触和配色这类细节。",
+      "intent": "注意焦点",
+      "note": ""
+    },
+    {
+      "id": "Q17",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "我发呆时，脑子里常冒出一连串奇怪的联想。",
+      "intent": "联想走神",
+      "note": ""
+    },
+    {
+      "id": "Q18",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "S",
+      "text": "我学新技能时，偏好跟着教程一步步照做。",
+      "intent": "学习入口",
+      "note": ""
+    },
+    {
+      "id": "Q19",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "我的脑子里常年住着一个热闹的想象世界。",
+      "intent": "内心世界",
+      "note": ""
+    },
+    {
+      "id": "Q20",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "S",
+      "text": "我和朋友闲聊，更爱聊最近发生的具体趣事。",
+      "intent": "聊天题材",
+      "note": ""
+    },
+    {
+      "id": "Q21",
+      "kind": "scenario",
+      "text": "冒险途中在陌生的国度歇脚，你获得半天空闲，正好四处逛逛——",
+      "options": [
+        {
+          "text": "一头扎进最热闹的街市，跟摊主和路人聊个痛快",
+          "scores": [
+            {
+              "axis": "EI",
+              "pole": "E"
+            }
+          ]
+        },
+        {
+          "text": "找一家安静的旧书店，一个人慢慢消磨整个下午",
+          "scores": [
+            {
+              "axis": "EI",
+              "pole": "I"
+            }
+          ]
+        },
+        {
+          "text": "先查好地图排好路线，按顺序把景点一个个走完",
+          "scores": [
+            {
+              "axis": "JP",
+              "pole": "J"
+            }
+          ]
+        },
+        {
+          "text": "不看地图随便乱逛，哪条巷子看着顺眼就拐进哪条",
+          "scores": [
+            {
+              "axis": "JP",
+              "pole": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q22",
+      "kind": "scenario",
+      "text": "你所在的团队为一件事争执不下，眼看就要不欢而散——",
+      "options": [
+        {
+          "text": "把两个方案的利弊列成清单，选论证更硬的那个",
+          "scores": [
+            {
+              "axis": "TF",
+              "pole": "T"
+            }
+          ]
+        },
+        {
+          "text": "先让大家歇口气，私下问问每个人心里真实的感受",
+          "scores": [
+            {
+              "axis": "TF",
+              "pole": "F"
+            }
+          ]
+        },
+        {
+          "text": "把争论拉回具体数据：目前到底实际发生了什么",
+          "scores": [
+            {
+              "axis": "SN",
+              "pole": "S"
+            }
+          ]
+        },
+        {
+          "text": "后退一步问大家：这件事长远来看到底意味着什么",
+          "scores": [
+            {
+              "axis": "SN",
+              "pole": "N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q23",
+      "kind": "scenario",
+      "text": "旅途中你遇到一个从没人写过攻略的谜题——",
+      "options": [
+        {
+          "text": "马上拉上身边的朋友一起围过来，人多主意才多",
+          "scores": [
+            {
+              "axis": "EI",
+              "pole": "E"
+            }
+          ]
+        },
+        {
+          "text": "找一个没人打扰的角落，自己安静地和它耗到底",
+          "scores": [
+            {
+              "axis": "EI",
+              "pole": "I"
+            }
+          ]
+        },
+        {
+          "text": "先拆解它的规则和机制，推演出一条最优解路线",
+          "scores": [
+            {
+              "axis": "TF",
+              "pole": "T"
+            }
+          ]
+        },
+        {
+          "text": "凭第一感觉大胆去试，心情对了答案往往也就对了",
+          "scores": [
+            {
+              "axis": "TF",
+              "pole": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q24",
+      "kind": "scenario",
+      "text": "因为突发状况，你被困在某个陌生的地方一整晚——",
+      "options": [
+        {
+          "text": "先盘点手头的物资和充电宝，把这一晚安排明白",
+          "scores": [
+            {
+              "axis": "JP",
+              "pole": "J"
+            }
+          ]
+        },
+        {
+          "text": "既来之则安之，说不定这正是场计划外的小冒险",
+          "scores": [
+            {
+              "axis": "JP",
+              "pole": "P"
+            }
+          ]
+        },
+        {
+          "text": "先解决眼前的实际问题：找水、充电、把自己弄暖和",
+          "scores": [
+            {
+              "axis": "SN",
+              "pole": "S"
+            }
+          ]
+        },
+        {
+          "text": "抬头看看星空发发呆，正好把平时没空想的事想想",
+          "scores": [
+            {
+              "axis": "SN",
+              "pole": "N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q25",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我经常是那个在饭桌上抛出新话题的人。",
+      "intent": "话题发起",
+      "note": "测的是群体中主动供给话题的习惯，不是口才。"
+    },
+    {
+      "id": "Q26",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "I",
+      "text": "我一个人待很久也不觉得闷，反而挺自在。",
+      "intent": "独处自在",
+      "note": "与Q02互补：Q02测社交后的回血需求，本题测独处的基线舒适度。"
+    },
+    {
+      "id": "Q27",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "I",
+      "text": "我心情低落时，更想一个人静静待着。",
+      "intent": "低落去向",
+      "note": "测低落时的回血方向（找人还是独处），不涉及情绪强弱。"
+    },
+    {
+      "id": "Q28",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "T",
+      "text": "我面对好朋友的失误，也会忍不住直接指出来。",
+      "intent": "熟人直言",
+      "note": "直言的舒适度，不是是否得罪人。"
+    },
+    {
+      "id": "Q29",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "我给别人提意见时，总会先说好听的再提不足。",
+      "intent": "委婉表达",
+      "note": ""
+    },
+    {
+      "id": "Q30",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "我发现有分歧时，最先担心的是关系会不会受伤。",
+      "intent": "关系优先",
+      "note": "与情景题Q22的F选项呼应，但这里是日常分歧场景。"
+    },
+    {
+      "id": "Q31",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "J",
+      "text": "我有没做完的事，就总觉得心里挂着放不下。",
+      "intent": "事情收尾",
+      "note": ""
+    },
+    {
+      "id": "Q32",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我喜欢同时开好几个坑，哪个来劲就先做哪个。",
+      "intent": "同时开坑",
+      "note": "「开坑」为口语用词，可按目标人群替换为「开始几个新项目」。"
+    },
+    {
+      "id": "Q33",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我经常心血来潮，给平淡的日子加点新花样。",
+      "intent": "日常花样",
+      "note": ""
+    },
+    {
+      "id": "Q34",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "S",
+      "text": "我吃饭时很在意口感和味道这些具体的体验。",
+      "intent": "五感体验",
+      "note": ""
+    },
+    {
+      "id": "Q35",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "我说话时特别爱打比方，把事情讲成画面。",
+      "intent": "爱打比方",
+      "note": "隐喻和类比是N极的经典外显行为。"
+    },
+    {
+      "id": "Q36",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "我常常琢磨若干年后的生活可能是什么样子。",
+      "intent": "未来畅想",
+      "note": ""
+    },
+    {
+      "id": "Q37",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我闲不住，一到周末就琢磨约人出去玩。",
+      "intent": "周末安排",
+      "note": ""
+    },
+    {
+      "id": "Q38",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "E",
+      "text": "我遇到开心的事，会立刻想分享给身边的人。",
+      "intent": "情绪外放",
+      "note": ""
+    },
+    {
+      "id": "Q39",
+      "kind": "likert",
+      "axis": "EI",
+      "pole": "I",
+      "text": "能用文字说清楚的事，我一般不打电话。",
+      "intent": "沟通方式",
+      "note": "现代社交的 I 极经典外显。"
+    },
+    {
+      "id": "Q40",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "T",
+      "text": "我坚持规则面前人人平等，亲近的人也不例外。",
+      "intent": "规则公平",
+      "note": ""
+    },
+    {
+      "id": "Q41",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "走进一个房间，我总能先察觉到气氛的细微变化。",
+      "intent": "氛围嗅觉",
+      "note": ""
+    },
+    {
+      "id": "Q42",
+      "kind": "likert",
+      "axis": "TF",
+      "pole": "F",
+      "text": "就算决定是对的，只要伤了人我也会难受很久。",
+      "intent": "事后煎熬",
+      "note": ""
+    },
+    {
+      "id": "Q43",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "J",
+      "text": "我喜欢列待办清单，划掉已完成的一项特别满足。",
+      "intent": "清单划勾",
+      "note": ""
+    },
+    {
+      "id": "Q44",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我出门逛街，常会买下原本没打算买的东西。",
+      "intent": "计划外消费",
+      "note": ""
+    },
+    {
+      "id": "Q45",
+      "kind": "likert",
+      "axis": "JP",
+      "pole": "P",
+      "text": "我的兴趣隔一阵子就会转向新的方向。",
+      "intent": "兴趣轮换",
+      "note": ""
+    },
+    {
+      "id": "Q46",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "我常会想，如果当时换个选择，现在会怎样。",
+      "intent": "假设推演",
+      "note": ""
+    },
+    {
+      "id": "Q47",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "N",
+      "text": "看完一部作品，我总忍不住琢磨它想表达什么。",
+      "intent": "追问深意",
+      "note": ""
+    },
+    {
+      "id": "Q48",
+      "kind": "likert",
+      "axis": "SN",
+      "pole": "S",
+      "text": "我对气味和触感这类细节，总记得格外清楚。",
+      "intent": "感官记忆",
+      "note": ""
+    }
+  ]
+}

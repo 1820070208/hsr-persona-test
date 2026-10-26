@@ -425,7 +425,7 @@
     }
     if (!view || !PERSONAS.byCode[PERSONAS.migrateCode(view.code)]) return false;
     const code = PERSONAS.migrateCode(view.code);
-    const letters = { EI: code[0], TF: code[1], JP: code[2], SN: code[3] };
+    const letters = { EI: code[0], SN: code[1], TF: code[2], JP: code[3] };
     const scores = {};
     AXES.forEach(function (axis) {
       scores[axis] = letters[axis] === axis[0] ? 8 : -8;
